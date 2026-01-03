@@ -1,0 +1,442 @@
+% \iffalse meta-comment
+%
+% essaykit.dtx
+% Copyright (C) 2025-2026 by swifterhtmler RKTuotanto@icloud.com
+%
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3c
+% of this license or any later version.
+% The latest version of this license is in:
+%
+%    http://www.latex-project.org/lppl.txt
+%
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{essaykit.dtx}
+%</driver>
+%<package>\NeedsTeXFormat{LaTeX2e}[2005/12/01]
+%<package>\ProvidesPackage{essaykit}
+%<*package>
+    [2026/01/02 v2.0 essaykit - Styled boxes and academic formatting]
+%</package>
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{essaykit}
+\usepackage{hypdoc}
+% \EnableCrossrefs
+% \CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{essaykit.dtx}
+  \PrintChanges
+  \PrintIndex
+\end{document}
+%</driver>
+% \fi
+%
+% \CheckSum{132}
+%
+%
+% \changes{v1.0}{2025/08/30}{Initial version}
+% \changes{v2.0}{2026/01/02}{Added image commands and positioning}
+%
+% \GetFileInfo{essaykit.dtx}
+%
+% \DoNotIndex{\newcommand,\newenvironment}
+%
+% \title{The \textsf{essaykit} package\thanks{This document
+%   corresponds to \textsf{essaykit}~\fileversion, dated \filedate.}}
+% \author{[Swifterhtmler] \\ \texttt{[RKTuotanto@icloud.com]}}
+%
+% \maketitle
+%
+% \section{Introduction}
+%
+% The \textsf{essaykit} package provides a comprehensive set of commands for creating
+% styled boxes, titles, quotes, and bibliographic references in \LaTeX{} documents.
+% It is particularly designed for academic and scientific documents requiring
+% consistent styling and professional presentation.
+%
+% \section{Usage}
+%
+% \subsection{Styled Boxes}
+%
+% \DescribeMacro{\rbox}
+% The |\rbox| command creates customizable colored boxes:
+% \begin{quote}
+% |\rbox[|\meta{options}|]{|\meta{content}|}|
+% \end{quote}
+% Options: \texttt{title}, \texttt{color}, \texttt{textcolor}, \texttt{width}.
+% Multiple options are separated by commas.
+% 
+% \subsection{Main Titles}
+%
+% \DescribeMacro{\maintitle}
+% The |\maintitle| command creates large, styled titles:
+% \begin{quote}
+% |\maintitle[|\meta{options}|]{|\meta{title text}|}|
+% \end{quote}
+% Options: \texttt{titlecolor}, \texttt{titlesize}, \texttt{titlespacing}.
+% 
+% \subsection{Quotes}
+%
+% \DescribeMacro{\quoter}
+% The |\quoter| command creates formatted quotations:
+% \begin{quote}
+% |\quoter[|\meta{options}|]{|\meta{quote text}|}{|\meta{author}|}|
+% \end{quote}
+% Options: \texttt{authorcolor}, \texttt{quotesize}, \texttt{quotespacing}.
+%
+% \subsection{Rules and Sources}
+%
+% \DescribeMacro{\rrule}
+% The |\rrule| command creates horizontal rules.
+%
+% \DescribeMacro{\sources}
+% The |\sources| command creates formatted bibliography sections:
+% \begin{quote}
+% |\sources{|\meta{comma-separated list}|}|
+% \end{quote}
+%
+% \subsection{Image Commands}
+%
+% \DescribeMacro{\logo}
+% The |\logo| command inserts an image without caption:
+% \begin{quote}
+% |\logo{|\meta{filename}|}{|\meta{width}|}|
+% \end{quote}
+%
+% \DescribeMacro{\fig}
+% The |\fig| command creates a captioned figure:
+% \begin{quote}
+% |\fig{|\meta{filename}|}{|\meta{caption}|}{|\meta{width}|}|
+% \end{quote}
+%
+% \subsection{Positioning Commands}
+%
+% \DescribeMacro{\placeleft}
+% The |\placeleft| command positions content at absolute coordinates 
+% from the left margin:
+% \begin{quote}
+% |\placeleft{|\meta{distance}|}{|\meta{content}|}{|\meta{width}|}|
+% \end{quote}
+%
+% \DescribeMacro{\placeright}
+% The |\placeright| command positions content at absolute coordinates 
+% from the right margin:
+% \begin{quote}
+% |\placeright{|\meta{distance}|}{|\meta{content}|}{|\meta{width}|}|
+% \end{quote}
+%
+% \section{Examples}
+%
+% \subsection{Box Examples}
+%
+% Basic box:
+% \begin{verbatim}
+% \rbox{This is a simple box}
+% \end{verbatim}
+%
+% Box with title and custom colors:
+% \begin{verbatim}
+% \rbox[title=Important Note, color=softblue,
+%       textcolor=darkgray]{Content here}
+% \end{verbatim}
+%
+% \subsection{Quote Examples}
+%
+% \begin{verbatim}
+% \quoter[authorcolor=darkgray, quotesize=\Large]{
+%     The important thing is not to stop questioning.
+% }{Albert Einstein}
+% \end{verbatim}
+%
+% \subsection{Image Command Examples}
+%
+% Basic logo insertion:
+% \begin{verbatim}
+% \logo{image.png}{5cm}
+% \end{verbatim}
+%
+% Logo with positioning:
+% \begin{verbatim}
+% \placeleft{2cm}{\logo{company-logo.png}{3cm}}{8cm}
+% \end{verbatim}
+%
+% Basic figure with caption:
+% \begin{verbatim}
+% \fig{chart.png}{Monthly sales data}{0.7\textwidth}
+% \end{verbatim}
+%
+% Smaller figure:
+% \begin{verbatim}
+% \fig{diagram.png}{System architecture}{0.5\textwidth}
+% \end{verbatim}
+%
+% \subsection{Positioning Command Examples}
+%
+% These commands position content at absolute locations without 
+% affecting text flow.
+%
+% Place content from left margin:
+% \begin{verbatim}
+% \placeleft{3cm}{\logo{sidebar.png}{4cm}}{10cm}
+% \end{verbatim}
+%
+% Place content from right margin:
+% \begin{verbatim}
+% \placeright{2cm}{\rbox[color=softblue]{Note}}{8cm}
+% \end{verbatim}
+%
+% \section{Predefined Colors}
+%
+% Available colors: \texttt{greycolor}, \texttt{marooncolor},
+% \texttt{bluecolor}, \texttt{lightgray}, \texttt{softgray},
+% \texttt{boxcolor}, \texttt{darkgray}, \texttt{softblue}.
+%
+% \section{Customizable Options}
+%
+% \begin{itemize}
+% \item \textbf{Content}: \texttt{title}
+% \item \textbf{Colors}: \texttt{color}, \texttt{textcolor},
+%       \texttt{titlecolor}, \texttt{authorcolor}
+% \item \textbf{Sizing}: \texttt{width}, \texttt{titlesize},
+%       \texttt{quotesize}
+% \item \textbf{Spacing}: \texttt{titlespacing}, \texttt{quotespacing}
+% \end{itemize}
+%
+% \textbf{Note}: Positioned content floats above text and doesn't affect document flow.
+% 
+% 
+% \section{Implementation}
+%
+% \StopEventually{}
+%
+%    \begin{macrocode}
+%<*package>
+%    \end{macrocode}
+%
+% \subsection{Package Dependencies}
+%
+%    \begin{macrocode}
+%    
+% new packages added  
+\RequirePackage{enumitem}
+\RequirePackage{graphicx}
+\RequirePackage{textpos}
+
+% old packages
+\RequirePackage{imakeidx}
+\RequirePackage{amsmath}
+\RequirePackage{caption}
+\RequirePackage{wrapfig}
+\RequirePackage{tcolorbox}
+\RequirePackage{tikz}
+\RequirePackage{chemfig}
+\RequirePackage{xstring}
+\RequirePackage{xcolor}
+\RequirePackage{keyval}
+\RequirePackage{xkeyval}
+\RequirePackage[pdftex,
+ hidelinks,
+ breaklinks=true,
+ pdfpagemode=UseNone,
+ pdfstartview=FitH
+]{hyperref}
+%    \end{macrocode}
+%
+% \subsection{Color Definitions}
+%
+%    \begin{macrocode}
+\definecolor{greycolor}{HTML}{525252}
+\definecolor{marooncolor}{HTML}{882B21}
+\definecolor{bluecolor}{HTML}{394773}
+\def\essaykit@family{ek}
+\definecolor{lightgray}{rgb}{0.9, 0.9, 0.9}
+\definecolor{softgray}{rgb}{0.7, 0.7, 0.7}
+\definecolor{boxcolor}{rgb}{0.65, 0.8, 0.85}
+\definecolor{darkgray}{rgb}{0.2, 0.2, 0.2}
+\definecolor{softblue}{RGB}{70, 130, 180}
+%    \end{macrocode}
+%
+% \subsection{Key-Value System}
+%
+%    \begin{macrocode}
+\define@key{ek}{color}[lightgray]{\def\ek@color{#1}}
+\define@key{ek}{textcolor}[black]{\def\ek@textcolor{#1}}
+\define@key{ek}{title}[]{\def\ek@title{#1}}
+\define@key{ek}{width}[\textwidth]{\def\ek@width{#1}}
+\setkeys{ek}{color,textcolor,title,width}
+%    \end{macrocode}
+%
+% \begin{macro}{\rbox}
+% The main box command with customizable options.
+%    \begin{macrocode}
+\newcommand{\rbox}[2][]{%
+ \def\ek@title{}%
+ \setkeys{ek}{#1}%
+\ifx\ek@title\empty
+ \begin{tcolorbox}[%
+ colback=\ek@color!10,
+ colframe=\ek@color,
+ width=\ek@width,
+ arc=3.5mm,
+ boxrule=1pt
+ ]%
+ \color{\ek@textcolor}#2
+ \end{tcolorbox}%
+\else
+ \begin{tcolorbox}[%
+ colback=\ek@color!10,
+ colframe=\ek@color,
+ coltitle=\ek@textcolor,
+ colbacktitle=\ek@color,
+ title=\ek@title,
+ width=\ek@width,
+ arc=3.5mm,
+ boxrule=1pt,
+ fonttitle=\bfseries
+ ]%
+ \color{\ek@textcolor}#2
+ \end{tcolorbox}%
+\fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{Title Commands}
+%
+%    \begin{macrocode}
+\define@key{ek}{titlecolor}[black]{\def\ek@titlecolor{#1}}
+\define@key{ek}{titlesize}[\Huge]{\def\ek@titlesize{#1}}
+\define@key{ek}{titlespacing}[0.5cm]{\def\ek@titlespacing{#1}}
+\setkeys{ek}{color,textcolor,title,width,titlecolor,titlesize,titlespacing}
+%    \end{macrocode}
+%
+% \begin{macro}{\maintitle}
+% Creates styled main titles.
+%    \begin{macrocode}
+\newcommand{\maintitle}[2][]{%
+ \setkeys{ek}{titlecolor,titlesize,titlespacing}%
+ \setkeys{ek}{#1}%
+ {\ek@titlesize \bfseries \textcolor{\ek@titlecolor}{#2}}\\[\ek@titlespacing]%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{Quote Commands}
+%
+%    \begin{macrocode}
+\define@key{ek}{authorcolor}[gray]{\def\ek@authorcolor{#1}}
+\define@key{ek}{quotesize}[\large]{\def\ek@quotesize{#1}}
+\define@key{ek}{quotespacing}[1em]{\def\ek@quotespacing{#1}}
+\setkeys{ek}{color,textcolor,title,width,titlecolor,titlesize,titlespacing,authorcolor,quotesize,quotespacing}
+%    \end{macrocode}
+%
+% \begin{macro}{\quoter}
+% Creates formatted quotes with author attribution.
+%    \begin{macrocode}
+\newcommand{\quoter}[3][]{
+ \setkeys{ek}{authorcolor,quotesize,quotespacing}
+ \setkeys{ek}{#1}
+\begin{center}
+ \ek@quotesize \textit{#2}\\[\ek@quotespacing]
+ \normalsize \color{\ek@authorcolor} -- #3 %name of the author
+\end{center}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsection{divider commands}
+% \begin{macro}{\rrule}
+% Simple horizontal rule command.
+%    \begin{macrocode}
+\newcommand{\rrule}{
+ \par\noindent\rule{\textwidth}{0.22pt}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\sources}
+% Bibliography/sources command with hyperlink support.
+%    \begin{macrocode}
+\makeatletter
+\newcommand{\sources}[1]{
+ \begin{tcolorbox}[colback=white, colframe=black!90, title=\section{Lähteet}, fonttitle=\bfseries]
+ \begin{itemize}
+ \@for\source:=#1\do{%
+ \item\source %
+ }%
+ \end{itemize}
+ \end{tcolorbox}
+}
+\makeatother
+%    \end{macrocode}
+% \end{macro}
+%
+% 
+% \subsection{image commands}
+% \begin{macro}{\logo}
+% adds logo of choosen width to the page
+%    \begin{macrocode}
+\newcommand{\logo}[2]{
+   \includegraphics[width=#2]{#1}
+}
+%    \end{macrocode}
+% \end{macro}
+% 
+%   
+%    
+% \begin{macro}{\fig}
+%  adds figure to page
+%    \begin{macrocode}
+\newcommand{\fig}[3]{
+  \begin{figure}[h]
+    \centering
+   \includegraphics[width=#3]{#1}
+    \caption{#2}
+  \end{figure}
+}
+%   \end{macrocode}
+% \end{macro}
+% 
+% 
+% 
+
+% \begin{macro}{\placeright}
+% Position from right margin: \placeright{distance}{content}
+%    \begin{macrocode}
+\newcommand{\placeright}[3]{
+  \begin{textblock*}{#3}(\dimexpr\paperwidth-#1-#3\relax,2cm)
+    #2
+  \end{textblock*}
+}
+%    \end{macrocode}
+% \end{macro}
+% 
+% 
+% 
+% \begin{macro}{\placeleft}
+% Position from left margin: \placeleft{distance}{content}{width}
+%    \begin{macrocode}
+\newcommand{\placeleft}[3]{
+  \begin{textblock*}{#3}(\dimexpr\paperwidth-#1-#3\relax,2cm)
+    #2
+  \end{textblock*}
+}
+%    \end{macrocode}
+% \end{macro}
+
+% 
+%    \begin{macrocode}
+%</package>
+%    \end{macrocode}
+%
+% \Finale
+\endinput

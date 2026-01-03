@@ -1,0 +1,149 @@
+%%
+%% This is file `essaykit.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% essaykit.dtx  (with options: `package')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2025-2026 by swifterhtmler RKTuotanto@icloud.com
+%% 
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or any later version.
+%% The latest version of this license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%% 
+\NeedsTeXFormat{LaTeX2e}[2005/12/01]
+\ProvidesPackage{essaykit}
+    [2026/01/02 v2.0 essaykit - Styled boxes and academic formatting]
+\RequirePackage{enumitem}
+\RequirePackage{graphicx}
+\RequirePackage{textpos}
+
+\RequirePackage{imakeidx}
+\RequirePackage{amsmath}
+\RequirePackage{caption}
+\RequirePackage{wrapfig}
+\RequirePackage{tcolorbox}
+\RequirePackage{tikz}
+\RequirePackage{chemfig}
+\RequirePackage{xstring}
+\RequirePackage{xcolor}
+\RequirePackage{keyval}
+\RequirePackage{xkeyval}
+\RequirePackage[pdftex,
+ hidelinks,
+ breaklinks=true,
+ pdfpagemode=UseNone,
+ pdfstartview=FitH
+]{hyperref}
+\definecolor{greycolor}{HTML}{525252}
+\definecolor{marooncolor}{HTML}{882B21}
+\definecolor{bluecolor}{HTML}{394773}
+\def\essaykit@family{ek}
+\definecolor{lightgray}{rgb}{0.9, 0.9, 0.9}
+\definecolor{softgray}{rgb}{0.7, 0.7, 0.7}
+\definecolor{boxcolor}{rgb}{0.65, 0.8, 0.85}
+\definecolor{darkgray}{rgb}{0.2, 0.2, 0.2}
+\definecolor{softblue}{RGB}{70, 130, 180}
+\define@key{ek}{color}[lightgray]{\def\ek@color{#1}}
+\define@key{ek}{textcolor}[black]{\def\ek@textcolor{#1}}
+\define@key{ek}{title}[]{\def\ek@title{#1}}
+\define@key{ek}{width}[\textwidth]{\def\ek@width{#1}}
+\setkeys{ek}{color,textcolor,title,width}
+\newcommand{\rbox}[2][]{%
+ \def\ek@title{}%
+ \setkeys{ek}{#1}%
+\ifx\ek@title\empty
+ \begin{tcolorbox}[%
+ colback=\ek@color!10,
+ colframe=\ek@color,
+ width=\ek@width,
+ arc=3.5mm,
+ boxrule=1pt
+ ]%
+ \color{\ek@textcolor}#2
+ \end{tcolorbox}%
+\else
+ \begin{tcolorbox}[%
+ colback=\ek@color!10,
+ colframe=\ek@color,
+ coltitle=\ek@textcolor,
+ colbacktitle=\ek@color,
+ title=\ek@title,
+ width=\ek@width,
+ arc=3.5mm,
+ boxrule=1pt,
+ fonttitle=\bfseries
+ ]%
+ \color{\ek@textcolor}#2
+ \end{tcolorbox}%
+\fi
+}
+\define@key{ek}{titlecolor}[black]{\def\ek@titlecolor{#1}}
+\define@key{ek}{titlesize}[\Huge]{\def\ek@titlesize{#1}}
+\define@key{ek}{titlespacing}[0.5cm]{\def\ek@titlespacing{#1}}
+\setkeys{ek}{color,textcolor,title,width,titlecolor,titlesize,titlespacing}
+\newcommand{\maintitle}[2][]{%
+ \setkeys{ek}{titlecolor,titlesize,titlespacing}%
+ \setkeys{ek}{#1}%
+ {\ek@titlesize \bfseries \textcolor{\ek@titlecolor}{#2}}\\[\ek@titlespacing]%
+}
+\define@key{ek}{authorcolor}[gray]{\def\ek@authorcolor{#1}}
+\define@key{ek}{quotesize}[\large]{\def\ek@quotesize{#1}}
+\define@key{ek}{quotespacing}[1em]{\def\ek@quotespacing{#1}}
+\setkeys{ek}{color,textcolor,title,width,titlecolor,titlesize,titlespacing,authorcolor,quotesize,quotespacing}
+\newcommand{\quoter}[3][]{
+ \setkeys{ek}{authorcolor,quotesize,quotespacing}
+ \setkeys{ek}{#1}
+\begin{center}
+ \ek@quotesize \textit{#2}\\[\ek@quotespacing]
+ \normalsize \color{\ek@authorcolor} -- #3 %name of the author
+\end{center}
+}
+\newcommand{\rrule}{
+ \par\noindent\rule{\textwidth}{0.22pt}
+}
+\makeatletter
+\newcommand{\sources}[1]{
+ \begin{tcolorbox}[colback=white, colframe=black!90, title=\section{Lähteet}, fonttitle=\bfseries]
+ \begin{itemize}
+ \@for\source:=#1\do{%
+ \item\source %
+ }%
+ \end{itemize}
+ \end{tcolorbox}
+}
+\makeatother
+\newcommand{\logo}[2]{
+   \includegraphics[width=#2]{#1}
+}
+\newcommand{\fig}[3]{
+  \begin{figure}[h]
+    \centering
+   \includegraphics[width=#3]{#1}
+    \caption{#2}
+  \end{figure}
+}
+
+\newcommand{\placeright}[3]{
+  \begin{textblock*}{#3}(\dimexpr\paperwidth-#1-#3\relax,2cm)
+    #2
+  \end{textblock*}
+}
+\newcommand{\placeleft}[3]{
+  \begin{textblock*}{#3}(\dimexpr\paperwidth-#1-#3\relax,2cm)
+    #2
+  \end{textblock*}
+}
+
+\endinput
+%%
+%% End of file `essaykit.sty'.
